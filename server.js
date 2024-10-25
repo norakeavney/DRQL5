@@ -8,7 +8,7 @@ const port = 3000;
 // This line sets up a route for the homepage ('/').
 app.get('/', (req, res) => { 
     // When someone visits the homepage, the server responds with "Hello World."
-    res.send('Hello World'); 
+    res.send('Welcome to Data Representation & Querying'); 
 });
 
 // This line makes the server start listening on the specified port.
