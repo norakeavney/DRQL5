@@ -6,9 +6,10 @@ const app = express();
 const port = 3000; 
 
 // This line sets up a route for the homepage ('/').
-app.get('/hello/:name', (req, res) => {
+app.get('/hello/:name/:lname', (req, res) => {
     const name = req.params.name;
-    res.send(`Hello ${name}`);
+    const lname = req.params.lname;
+    res.send(`Hello ${name} ${lname}`);
 });
 
 // This line makes the server start listening on the specified port.
