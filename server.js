@@ -37,7 +37,15 @@ app.get('/api/movies', (req, res) => {
             "Poster": "https://example.com/poster3.jpg"
         }
     ];
-    res.json({ movies });
+    res.status(201).json({ myMovies: movies });
+
+
+});
+
+const path = require('path');
+
+app.get('/index', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // This line makes the server start listening on the specified port.
