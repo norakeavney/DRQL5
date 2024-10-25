@@ -44,17 +44,32 @@ app.get('/api/movies', (req, res) => {
 
 });
 
+//Routing for Indexhtml
 const path = require('path');
 
 app.get('/index', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+//Body parser Middleware to parse URL-encoded data
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+
+//GET request
 app.get('/name', (req, res) => {
     const firstname = req.query.firstname;
     const lastname = req.query.lastname;
     res.send(`Hello ${firstname} ${lastname}`);
 });
+
+
+// POST request handler for the /name endpoint
+app.post('/name', (req, res) => {
+    const firstname = req.body.firstname;
+    const lastname = req.body.lastname;
+    res.send(`Hello ${firstname} ${lastname}`);
+});
+
 
 // This line makes the server start listening on the specified port.
 app.listen(port, () => { 
