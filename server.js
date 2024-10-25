@@ -5,6 +5,8 @@ const app = express();
 // We set a variable "port" to 3000, which is the port number where our server will listen.
 const port = 3000; 
 
+app.use(express.static('public')); //Serve all static files 
+
 // This line sets up a route for the homepage ('/').
 app.get('/hello/:name/:lname', (req, res) => {
     const name = req.params.name;
@@ -46,6 +48,12 @@ const path = require('path');
 
 app.get('/index', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+app.get('/name', (req, res) => {
+    const firstname = req.query.firstname;
+    const lastname = req.query.lastname;
+    res.send(`Hello ${firstname} ${lastname}`);
 });
 
 // This line makes the server start listening on the specified port.
