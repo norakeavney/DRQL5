@@ -6,13 +6,19 @@ const app = express();
 const port = 3000; 
 
 // This line sets up a route for the homepage ('/').
-app.get('/', (req, res) => { 
-    // When someone visits the homepage, the server responds with "Hello World."
-    res.send('Welcome to Data Representation & Querying'); 
+app.get('/hello/:name', (req, res) => {
+    const name = req.params.name;
+    res.send(`Hello ${name}`);
 });
 
 // This line makes the server start listening on the specified port.
 app.listen(port, () => { 
     // It logs a message to the console to tell us the server is running.
     console.log(`Server is running on http://localhost:${port}`); 
+});
+
+//Error Handling
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something went wrong!');
 });
